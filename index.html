@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BARIS BERBER | Electronic Music</title>
+    <meta
+      name="description"
+      content="A raw Berlin-leaning DJ site for BARIS BERBER: dark rooms, direct sound, no gloss."
+    />
+    <link rel="preload" href="assets/baris-stage.png" as="image" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="led-backdrop" aria-hidden="true">
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+    </div>
+
+    <div class="loader" data-loader aria-hidden="true">
+      <span>BARIS BERBER</span>
+      <i></i>
+    </div>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="#home" aria-label="BARIS BERBER home">BARIS BERBER</a>
+      <div class="header-actions">
+        <nav class="site-nav" data-nav>
+          <a href="#tour" data-i18n="navTour">Tour</a>
+          <a href="#music" data-i18n="navMusic">Music</a>
+          <a href="#about" data-i18n="navAbout">About</a>
+          <a href="#contact" data-i18n="navNewsletter">Newsletter</a>
+        </nav>
+        <div class="language-switch" role="group" aria-label="Language">
+          <button type="button" data-lang-button="en">EN</button>
+          <button type="button" data-lang-button="tr">TR</button>
+        </div>
+        <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" data-menu-toggle>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero" aria-label="BARIS hero">
+        <img
+          class="hero-image"
+          src="assets/baris-stage.png"
+          alt="BARIS BERBER electronic music hero visual"
+          data-i18n-alt="heroAlt"
+        />
+        <div class="hero-scrim"></div>
+        <div class="scanlines" aria-hidden="true"></div>
+        <div class="hero-frame" aria-hidden="true">
+          <span>BB-26</span>
+          <span>TR / DE</span>
+          <span>140 BPM</span>
+        </div>
+        <div class="hero-content">
+          <p class="eyebrow" data-i18n="heroEyebrow">Istanbul / Berlin / Afterhours</p>
+          <h1 class="kinetic-title" data-text="BARIS BERBER">BARIS<br />BERBER</h1>
+          <p class="hero-line" data-i18n="heroLine">Hypnotic techno, emotional pressure, late-night architecture.</p>
+          <div class="hero-actions">
+            <a href="#tour" data-i18n="heroTour">Tour Dates</a>
+            <a href="#music" data-i18n="heroListen">Listen</a>
+          </div>
+        </div>
+        <a class="scroll-cue" href="#tour" aria-label="Scroll to tour dates" data-i18n="scrollCue">Scroll</a>
+      </section>
+
+      <section class="marquee" aria-label="BARIS BERBER performance modes">
+        <div>
+          <span data-i18n="marqueeOne">Hypnotic Techno</span>
+          <span data-i18n="marqueeTwo">Warehouse Pressure</span>
+          <span data-i18n="marqueeThree">Late Night Rituals</span>
+          <span data-i18n="marqueeFour">Emotional Frequencies</span>
+        </div>
+        <div aria-hidden="true">
+          <span data-i18n="marqueeOne">Hypnotic Techno</span>
+          <span data-i18n="marqueeTwo">Warehouse Pressure</span>
+          <span data-i18n="marqueeThree">Late Night Rituals</span>
+          <span data-i18n="marqueeFour">Emotional Frequencies</span>
+        </div>
+      </section>
+
+      <section class="intro band reveal">
+        <p data-split data-i18n="introText">
+          BARIS BERBER builds long-form club narratives from metallic rhythm, warm distortion and cinematic
+          tension. Each set moves like a controlled blackout: minimal on the surface, restless underneath.
+        </p>
+      </section>
+
+      <section class="visual-section section reveal" aria-label="Live performance visuals">
+        <div class="visual-copy">
+          <p class="eyebrow" data-i18n="visualEyebrow">Live format</p>
+          <h2 data-i18n="visualTitle">Dense rooms, slow ignition, heavy release.</h2>
+        </div>
+        <div class="visual-wall">
+          <figure class="visual-tile tall">
+            <img src="assets/baris-portrait.png" alt="BARIS BERBER portrait in a dark industrial setting" />
+          </figure>
+          <figure class="visual-tile">
+            <img src="assets/baris-stage.png" alt="BARIS BERBER playing in front of a festival crowd" />
+          </figure>
+          <figure class="visual-tile wide">
+            <img src="assets/baris-booth.png" alt="BARIS BERBER playing in a dark booth" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="tour section reveal" id="tour">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="tourEyebrow">Upcoming</p>
+          <h2 data-i18n="tourTitle">Tour Dates</h2>
+        </div>
+        <div class="tour-list" aria-label="Tour dates">
+          <article class="tour-row">
+            <time datetime="2026-07-04" data-i18n="dateOne">04 Jul</time>
+            <div>
+              <h3>Module Istanbul</h3>
+              <p>Istanbul, TR</p>
+            </div>
+            <a href="#contact" data-i18n="tickets">Tickets</a>
+          </article>
+          <article class="tour-row">
+            <time datetime="2026-07-19" data-i18n="dateTwo">19 Jul</time>
+            <div>
+              <h3>Night Circuit</h3>
+              <p>Berlin, DE</p>
+            </div>
+            <a href="#contact" data-i18n="tickets">Tickets</a>
+          </article>
+          <article class="tour-row">
+            <time datetime="2026-08-09" data-i18n="dateThree">09 Aug</time>
+            <div>
+              <h3>Voltage Open Air</h3>
+              <p>Amsterdam, NL</p>
+            </div>
+            <a href="#contact" data-i18n="tickets">Tickets</a>
+          </article>
+          <article class="tour-row">
+            <time datetime="2026-09-12" data-i18n="dateFour">12 Sep</time>
+            <div>
+              <h3>Subroom Sessions</h3>
+              <p>London, UK</p>
+            </div>
+            <a href="#contact" data-i18n="tickets">Tickets</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="music section reveal" id="music">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="musicEyebrow">Selected</p>
+          <h2 data-i18n="musicTitle">Sound</h2>
+        </div>
+        <div class="spotify-feature">
+          <div>
+            <p class="eyebrow" data-i18n="spotifyEyebrow">Spotify</p>
+            <h3 data-i18n="spotifyTitle">BARIŞ BERBER on Spotify</h3>
+            <p data-i18n="spotifyText">
+              Popular tracks, rough edges and the official artist feed in one place.
+            </p>
+            <a
+              class="spotify-artist-link"
+              href="https://open.spotify.com/artist/2Nv2Yytr23u7EnwiugU2Yv?si=FoOEmcDWTg2A4RTiDrZJ_g"
+              target="_blank"
+              rel="noreferrer"
+              data-i18n="spotifyArtist"
+            >Open Artist</a>
+          </div>
+          <iframe
+            title="Spotify Embed: BARIŞ BERBER"
+            src="https://open.spotify.com/embed/artist/2Nv2Yytr23u7EnwiugU2Yv?utm_source=generator"
+            loading="lazy"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          ></iframe>
+        </div>
+        <div class="release-grid">
+          <article class="release-card">
+            <div class="track-meta"><span>01</span><span data-i18n="releaseOneType">Single</span></div>
+            <h3>The Fall</h3>
+            <p data-i18n="releaseOneText">A late drop with a cold shoulder and no apology.</p>
+            <div class="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <a class="spotify-link" href="https://open.spotify.com/track/3qkS3UhCtr2QhHVHB1z0XR" target="_blank" rel="noreferrer" data-i18n="spotifyOpen">Spotify</a>
+          </article>
+          <article class="release-card">
+            <div class="track-meta"><span>02</span><span data-i18n="releaseTwoType">Single</span></div>
+            <h3>Can U See Me</h3>
+            <p data-i18n="releaseTwoText">Body music with a vocal hook hiding in the haze.</p>
+            <div class="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <a class="spotify-link" href="https://open.spotify.com/track/0NauABd3rNzAIUdP7pcvbo" target="_blank" rel="noreferrer" data-i18n="spotifyOpen">Spotify</a>
+          </article>
+          <article class="release-card">
+            <div class="track-meta"><span>03</span><span data-i18n="releaseThreeType">Single</span></div>
+            <h3>Ocean</h3>
+            <p data-i18n="releaseThreeText">A wider cut, still dark around the edges.</p>
+            <div class="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <a class="spotify-link" href="https://open.spotify.com/track/4tSpzqUwLkbqiaRNELDHaD" target="_blank" rel="noreferrer" data-i18n="spotifyOpen">Spotify</a>
+          </article>
+          <article class="release-card">
+            <div class="track-meta"><span>04</span><span data-i18n="releaseFourType">Radio Mix</span></div>
+            <h3>Tension</h3>
+            <p data-i18n="releaseFourText">Shorter fuse, same pressure. Built to move fast.</p>
+            <div class="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <a class="spotify-link" href="https://open.spotify.com/track/7vXLQkyHuTABpTbagiMeVC" target="_blank" rel="noreferrer" data-i18n="spotifyOpen">Spotify</a>
+          </article>
+          <article class="release-card">
+            <div class="track-meta"><span>05</span><span data-i18n="releaseFiveType">Extended</span></div>
+            <h3>Can U See Me</h3>
+            <p data-i18n="releaseFiveText">The longer version lets the room sweat a little more.</p>
+            <div class="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <a class="spotify-link" href="https://open.spotify.com/track/2LZ6bqcRkKxMy6a9sLXmCe" target="_blank" rel="noreferrer" data-i18n="spotifyOpen">Spotify</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="about band reveal" id="about">
+        <div class="about-copy">
+          <p class="eyebrow" data-i18n="aboutEyebrow">About</p>
+          <h2 data-i18n="aboutTitle">Sound for rooms that change after midnight.</h2>
+          <p data-i18n="aboutText">
+            Born from Istanbul's warehouse pulse, BARIS BERBER moves between peak-time techno and shadowy
+            melodic pressure. His performances avoid quick spectacle, favoring slow ignition, tactile
+            drums and a steady emotional undertow.
+          </p>
+        </div>
+        <div class="signal-panel" aria-label="Performance stats">
+          <div><strong>42</strong><span data-i18n="statShows">Shows</span></div>
+          <div><strong>18</strong><span data-i18n="statCities">Cities</span></div>
+          <div><strong>03</strong><span data-i18n="statReleases">New releases</span></div>
+        </div>
+      </section>
+
+      <section class="video-band reveal" aria-label="Performance reel">
+        <div class="video-frame">
+          <img src="assets/baris-booth.png" alt="BARIS BERBER performance reel preview" />
+          <span data-i18n="reelTitle">Performance Reel</span>
+        </div>
+        <p data-i18n="reelText">
+          A club-first visual identity built around darkness, high contrast movement and the pressure
+          of a room already in motion.
+        </p>
+      </section>
+
+      <section class="contact section reveal" id="contact">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="contactEyebrow">Stay close</p>
+          <h2 data-i18n="contactTitle">Newsletter</h2>
+        </div>
+        <form class="signup">
+          <label for="email" data-i18n="emailLabel">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" data-i18n-placeholder="emailPlaceholder" required />
+          <button type="submit" data-i18n="subscribe">Subscribe</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>BARIS BERBER</p>
+      <div>
+        <a href="#music">SoundCloud</a>
+        <a href="https://open.spotify.com/artist/2Nv2Yytr23u7EnwiugU2Yv?si=FoOEmcDWTg2A4RTiDrZJ_g" target="_blank" rel="noreferrer">Spotify</a>
+        <a href="https://www.instagram.com/barisberber/" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="#contact" data-i18n="booking">Booking</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
