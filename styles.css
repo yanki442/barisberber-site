@@ -736,6 +736,10 @@ h1 {
     var(--panel);
 }
 
+.spotify-frame--compact {
+  display: none;
+}
+
 .spotify-feature iframe {
   display: block;
   width: 100%;
@@ -1323,17 +1327,30 @@ h1 {
 
   .spotify-feature > div {
     min-height: auto;
-    padding: 24px;
+    padding: 22px;
   }
 
   .spotify-feature h3 {
-    max-width: 12ch;
-    font-size: clamp(2rem, 10vw, 3.4rem);
+    max-width: 10ch;
+    margin-bottom: 14px;
+    font-size: clamp(1.85rem, 8.4vw, 3rem);
+    line-height: 0.94;
   }
 
-  .spotify-frame {
-    height: 232px;
-    max-height: 232px;
+  .spotify-feature p:not(.eyebrow) {
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+
+  .spotify-frame--artist {
+    display: none;
+  }
+
+  .spotify-frame--compact {
+    display: block;
+    height: 152px;
+    max-height: 152px;
+    background: #121212;
   }
 
   .spotify-feature iframe {
@@ -1458,7 +1475,15 @@ h1 {
 }
 
 @media (max-width: 540px) {
-  .spotify-frame {
+  .spotify-feature {
+    gap: 10px;
+  }
+
+  .spotify-feature > div {
+    padding: 20px;
+  }
+
+  .spotify-frame--compact {
     height: 152px;
     max-height: 152px;
   }
