@@ -1,7 +1,8 @@
 const translations = {
   en: {
-    metaTitle: "BARIS BERBER | Electronic Music",
-    metaDescription: "A raw Berlin-leaning DJ site for BARIS BERBER: dark rooms, direct sound, no gloss.",
+    metaTitle: "BARIS BERBER | Turkish DJ",
+    metaDescription:
+      "Official website of Barış Berber, Turkish DJ and electronic music artist. Tracks, Spotify, visuals and booking information.",
     navTour: "Dates",
     navMusic: "Sound",
     navAbout: "Bio",
@@ -63,15 +64,16 @@ const translations = {
     booking: "Booking",
   },
   tr: {
-    metaTitle: "BARIS BERBER | Elektronik Müzik",
-    metaDescription: "BARIS BERBER için Berlin'e yakın, karanlık ve direkt bir DJ sitesi.",
+    metaTitle: "BARIS BERBER | Turkish DJ",
+    metaDescription:
+      "Official website of Barış Berber, Turkish DJ and electronic music artist. Tracks, Spotify, visuals and booking information.",
     navTour: "Tarihler",
     navMusic: "Sound",
     navAbout: "Bio",
     navNewsletter: "Liste",
     heroAlt: "BARIS BERBER karanlık bir açık hava kalabalığında elektronik set çalarken",
-    heroEyebrow: "İstanbul çıkışlı / Berlin basıncı / afterhours",
-    heroLine: "Parlaklık yok. Ter, kırmızı ışık ve odanın üstünde basınç var.",
+    heroEyebrow: "İstanbul çıkışlı / afterhours / karanlık enerji",
+    heroLine: "Parlaklık yok. Sadece ter, kırmızı ışık ve odanın basıncı.",
     heroTour: "Tarihler",
     heroListen: "Dinle",
     scrollCue: "Aşağı",
@@ -80,9 +82,9 @@ const translations = {
     marqueeThree: "Telefon Yok, Oda Var",
     marqueeFour: "Sabaha Yakın",
     introText:
-      "BARIS BERBER odayı aceleye getirmez. Yavaşça kilitler: İstanbul sıcaklığı, Berlin bodrum sertliği, kick önde, melodi dumanın içinde.",
+      "BARIS BERBER odayı aceleye getirmez. Ritmi yavaşça kurar: İstanbul damarı, Berlin basıncı, önde davul, dumanda melodi.",
     visualEyebrow: "Oda modu",
-    visualTitle: "Işık az. Davul sert. Yumuşak iniş yok.",
+    visualTitle: "Az ışık, sert ritim, direkt enerji.",
     tourEyebrow: "Sıradaki odalar",
     tourTitle: "Tarihler",
     dateOne: "04 Tem",
@@ -92,31 +94,31 @@ const translations = {
     tickets: "Bilet",
     musicEyebrow: "Resmi",
     musicTitle: "Spotify",
-    spotifyEyebrow: "Artist feed",
-    spotifyTitle: "Spotify'da BARIŞ BERBER",
-    spotifyText: "Popüler şarkılar, sert kenarlar ve resmi artist akışı tek yerde.",
-    spotifyArtist: "Artisti Aç",
+    spotifyEyebrow: "Resmi akış",
+    spotifyTitle: "BARIŞ BERBER Spotify'da",
+    spotifyText: "Resmi parçalar, set ruhu ve Barış Berber sound'u tek yerde.",
+    spotifyArtist: "Spotify'da aç",
     spotifyOpen: "Spotify",
     releaseOneType: "Track",
     releaseTwoType: "Track",
     releaseThreeType: "Track",
     releaseFourType: "Radio Mix",
     releaseFiveType: "Extended",
-    releaseOneText: "Geç gelen, soğuk ve özürsüz bir düşüş.",
-    releaseTwoText: "Dumanın içinde saklanan vokal hook'lu beden müziği.",
-    releaseThreeText: "Daha geniş bir kayıt; kenarları hâlâ karanlık.",
-    releaseFourText: "Kısa fitil, aynı basınç. Hızlı hareket için.",
-    releaseFiveText: "Uzun versiyon odayı biraz daha terletiyor.",
+    releaseOneText: "Geç saatte gelen soğuk ve sert bir düşüş.",
+    releaseTwoText: "Dumanın içinde yükselen vokal ve gövdeye vuran ritim.",
+    releaseThreeText: "Derin, akışkan ve karanlık bir enerji.",
+    releaseFourText: "Gerilimli synth'ler ve direkt kulüp temposu.",
+    releaseFiveText: "Daha uzun, daha yoğun, daha geceye dönük bir versiyon.",
     aboutEyebrow: "Bio",
-    aboutTitle: "Gün ışığı istemeyen odalar için müzik.",
+    aboutTitle: "Geceye yakın, kulübe dönük, yüksek enerjili bir seçki.",
     aboutText:
-      "İstanbul sıcaklığı ile Berlin geceleri arasında büyüyen BARIS BERBER seti fiziksel tutar: ham davullar, kısa vokaller, uzun gerilim, oda önce gelir. Fazla cilalı hiçbir şey yok.",
+      "BARIS BERBER seti fiziksel tutar: derin bass, kısa vokaller, uzun gerilim ve odanın nabzına göre kurulan geçişler.",
     statShows: "Gece",
     statCities: "Şehir",
     statReleases: "Yayın",
     reelTitle: "Room Tape",
     reelText:
-      "Görsel dünya booth'a yakın durur: flash, duman, metal, yarı aydınlık yüzler. Kampanyadan çok gece günlüğü.",
+      "Booth'a yakın bir görsel dünya: flaş, duman, metal ve yarı karanlık yüzler. Kampanya değil, gece hafızası.",
     contactEyebrow: "Yakında kal",
     contactTitle: "Liste",
     emailLabel: "E-posta",
@@ -183,6 +185,17 @@ const applyLanguage = (language) => {
 
   const metaDescription = document.querySelector('meta[name="description"]');
   if (metaDescription) metaDescription.setAttribute("content", t("metaDescription"));
+
+  const metaMap = {
+    'meta[property="og:title"]': t("metaTitle"),
+    'meta[property="og:description"]': t("metaDescription"),
+    'meta[name="twitter:title"]': t("metaTitle"),
+    'meta[name="twitter:description"]': t("metaDescription"),
+  };
+
+  Object.entries(metaMap).forEach(([selector, content]) => {
+    document.querySelector(selector)?.setAttribute("content", content);
+  });
 
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     element.textContent = t(element.dataset.i18n);
