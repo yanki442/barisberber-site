@@ -19,6 +19,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -34,7 +35,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: 50;
+  z-index: 0;
   pointer-events: none;
   opacity: 0.16;
   background-image:
@@ -190,6 +191,7 @@ input {
   padding: 22px clamp(18px, 4vw, 56px);
   color: var(--text);
   transition: background 180ms ease, border-color 180ms ease, padding 180ms ease;
+  isolation: isolate;
 }
 
 .site-header.is-scrolled {
@@ -286,6 +288,7 @@ input {
   display: grid;
   align-items: end;
   isolation: isolate;
+  contain: paint;
 }
 
 .hero-image,
@@ -294,6 +297,7 @@ input {
   inset: 0;
   width: 100%;
   height: 100%;
+  pointer-events: none;
 }
 
 .hero-image {
@@ -303,6 +307,7 @@ input {
   transform: scale(1.06);
   animation: heroDrift 18s ease-in-out infinite alternate;
   will-change: transform;
+  backface-visibility: hidden;
 }
 
 .hero-scrim {
@@ -417,9 +422,11 @@ h1 {
   gap: 10px;
   flex-wrap: wrap;
   margin-top: 28px;
+  max-width: 100%;
 }
 
 .hero-actions a {
+  min-width: 0;
   min-height: 46px;
   display: inline-grid;
   place-items: center;
@@ -430,6 +437,7 @@ h1 {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+  white-space: nowrap;
 }
 
 .hero-actions a:first-child {
@@ -686,9 +694,12 @@ h1 {
   gap: clamp(22px, 5vw, 56px);
   align-items: stretch;
   margin-bottom: 26px;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .spotify-feature > div {
+  min-width: 0;
   min-height: 352px;
   display: flex;
   flex-direction: column;
@@ -706,6 +717,7 @@ h1 {
   margin-bottom: 18px;
   font-size: clamp(2.2rem, 6vw, 5.8rem);
   line-height: 0.88;
+  overflow-wrap: anywhere;
 }
 
 .spotify-feature p:not(.eyebrow) {
@@ -716,6 +728,7 @@ h1 {
 
 .spotify-feature iframe {
   width: 100%;
+  max-width: 100%;
   min-height: 352px;
   border: 1px solid var(--line);
   background: var(--panel);
@@ -735,11 +748,14 @@ h1 {
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .release-card {
   position: relative;
   overflow: hidden;
+  min-width: 0;
   min-height: 286px;
   display: flex;
   flex-direction: column;
@@ -747,6 +763,7 @@ h1 {
   background: rgba(17, 18, 19, 0.9);
   padding: 26px 30px 30px;
   transition: transform 260ms ease, background 260ms ease;
+  isolation: isolate;
 }
 
 .release-card::before {
@@ -760,6 +777,22 @@ h1 {
   transition: transform 260ms ease;
 }
 
+.release-card::after {
+  content: "";
+  position: absolute;
+  right: -34px;
+  bottom: -42px;
+  z-index: 0;
+  width: 164px;
+  height: 164px;
+  pointer-events: none;
+  opacity: 0.16;
+  background:
+    linear-gradient(135deg, transparent 48%, rgba(128, 247, 255, 0.55) 49% 50%, transparent 51%),
+    linear-gradient(45deg, transparent 52%, rgba(255, 255, 255, 0.34) 53% 54%, transparent 55%);
+  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+}
+
 .release-card:hover {
   transform: translateY(-8px);
   background: var(--panel-2);
@@ -770,17 +803,33 @@ h1 {
   transform: scaleX(1);
 }
 
+.release-card > * {
+  position: relative;
+  z-index: 1;
+}
+
 .track-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   gap: 16px;
+  min-width: 0;
   color: rgba(128, 247, 255, 0.82);
   font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+.track-meta span {
+  min-width: 0;
+}
+
+.track-meta span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .release-card h3 {
@@ -792,17 +841,20 @@ h1 {
   letter-spacing: 0;
   line-height: 0.96;
   text-wrap: balance;
+  overflow-wrap: anywhere;
 }
 
 .release-card .spotify-link {
   display: inline-grid;
   place-items: center;
+  max-width: 100%;
   margin-top: auto;
   background: transparent;
   color: var(--text);
   font-size: 0.76rem;
   font-weight: 800;
   letter-spacing: 0;
+  white-space: nowrap;
 }
 
 .release-card p {
@@ -1130,7 +1182,41 @@ h1 {
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
+  body::before {
+    opacity: 0.08;
+    mask-image: linear-gradient(180deg, black, transparent 48%);
+  }
+
+  .led-backdrop {
+    position: absolute;
+    height: 100svh;
+    display: block;
+    background:
+      radial-gradient(circle at 52% 8%, rgba(128, 247, 255, 0.13), transparent 34%),
+      radial-gradient(circle at 12% 24%, rgba(255, 75, 75, 0.08), transparent 28%),
+      linear-gradient(180deg, rgba(5, 5, 5, 0), rgba(5, 5, 5, 0.9));
+  }
+
+  .led-backdrop::before {
+    opacity: 0.08;
+    animation: none;
+  }
+
+  .led-backdrop i {
+    display: none;
+  }
+
+  .site-header {
+    overflow: visible;
+    background: rgba(5, 5, 5, 0.72);
+  }
+
+  .site-header.is-scrolled {
+    background: rgba(5, 5, 5, 0.92);
+    backdrop-filter: none;
+  }
+
   .menu-toggle {
     display: block;
   }
@@ -1164,6 +1250,19 @@ h1 {
 
   .hero {
     min-height: 86svh;
+    overflow: hidden;
+    contain: paint;
+  }
+
+  .hero-image {
+    animation: none;
+    transform: scale(1.04);
+    will-change: auto;
+  }
+
+  .scanlines {
+    opacity: 0.12;
+    animation: none;
   }
 
   .hero-frame {
@@ -1177,6 +1276,19 @@ h1 {
 
   .hero-content {
     margin-bottom: 13vh;
+    transform: none !important;
+  }
+
+  .hero-actions {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .hero-actions a {
+    flex: 1 1 132px;
+    min-height: 44px;
+    padding: 0 12px;
+    font-size: 0.72rem;
   }
 
   .scroll-cue {
@@ -1191,6 +1303,28 @@ h1 {
   .spotify-feature,
   .video-band {
     grid-template-columns: 1fr;
+  }
+
+  .spotify-feature {
+    gap: 14px;
+    overflow: visible;
+  }
+
+  .spotify-feature > div {
+    min-height: auto;
+    padding: 24px;
+  }
+
+  .spotify-feature h3 {
+    max-width: 12ch;
+    font-size: clamp(2rem, 10vw, 3.4rem);
+  }
+
+  .spotify-feature iframe {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: 352px;
   }
 
   .visual-wall {
@@ -1241,14 +1375,64 @@ h1 {
     grid-template-columns: 1fr;
   }
 
+  .release-grid {
+    overflow: visible;
+    gap: 8px;
+    background: transparent;
+    border: 0;
+  }
+
   .release-card {
-    min-height: 260px;
-    padding: 26px;
+    min-height: 0;
+    padding: 18px 18px 16px;
+    border: 1px solid var(--line);
+  }
+
+  .release-card::after {
+    right: -28px;
+    bottom: -32px;
+    width: 118px;
+    height: 118px;
+    opacity: 0.12;
   }
 
   .release-card h3 {
-    max-width: 12ch;
-    font-size: 2.25rem;
+    max-width: 13ch;
+    margin: 14px 0 9px;
+    font-size: clamp(1.75rem, 8vw, 2.15rem);
+    line-height: 0.98;
+  }
+
+  .release-card p {
+    max-width: 100%;
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .release-card .spotify-link {
+    width: 100%;
+    min-height: 38px;
+    margin-top: 0;
+    font-size: 0.7rem;
+  }
+
+  .spotify-artist-link {
+    width: 100%;
+    min-height: 42px;
+  }
+
+  .track-meta {
+    gap: 10px;
+    font-size: 0.62rem;
+  }
+
+  .waveform {
+    height: 26px;
+    margin: 14px 0 14px;
+  }
+
+  .waveform i {
+    width: 4px;
   }
 
   .site-footer {
