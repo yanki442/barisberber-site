@@ -656,6 +656,7 @@ h1 {
 .tour-row a,
 .release-card .spotify-link,
 .spotify-artist-link,
+.spotify-panel-actions a,
 .signup button {
   min-height: 44px;
   border: 1px solid rgba(255, 255, 255, 0.28);
@@ -681,6 +682,7 @@ h1 {
 .tour-row a:hover,
 .release-card .spotify-link:hover,
 .spotify-artist-link:hover,
+.spotify-panel-actions a:hover,
 .signup button:hover {
   transform: translateY(-2px);
   border-color: var(--cyan);
@@ -726,29 +728,6 @@ h1 {
   line-height: 1.6;
 }
 
-.spotify-frame {
-  min-width: 0;
-  height: 352px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  background:
-    linear-gradient(145deg, rgba(29, 185, 84, 0.12), transparent 42%),
-    var(--panel);
-}
-
-.spotify-frame--compact {
-  display: none;
-}
-
-.spotify-feature iframe {
-  display: block;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  border: 0;
-  background: transparent;
-}
-
 .spotify-artist-link {
   display: inline-grid;
   place-items: center;
@@ -756,6 +735,139 @@ h1 {
   background: var(--text);
   color: var(--bg);
 }
+
+.spotify-panel {
+  position: relative;
+  display: block;
+  min-width: 0;
+  min-height: 352px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(145deg, rgba(29, 185, 84, 0.2), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 42%),
+    rgba(14, 15, 16, 0.98);
+  padding: clamp(22px, 4vw, 38px);
+}
+
+.spotify-panel::before {
+  content: "";
+  position: absolute;
+  inset: auto -44px -66px auto;
+  width: 210px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(117, 225, 232, 0.22);
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+.spotify-panel-top,
+.spotify-panel-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.spotify-kicker {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--cyan);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+}
+
+.spotify-panel-top strong {
+  display: block;
+  font-size: clamp(2rem, 5vw, 4.2rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.spotify-mark {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #1db954;
+  color: #060606;
+  font-size: 1.35rem;
+  font-weight: 900;
+}
+
+.spotify-track-list {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1px;
+  margin: clamp(24px, 5vw, 42px) 0 clamp(24px, 5vw, 38px);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.spotify-track-list a {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  background: rgba(9, 10, 11, 0.94);
+  color: var(--text);
+  padding: 16px 18px;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.spotify-track-list a:hover {
+  background: rgba(29, 185, 84, 0.18);
+}
+
+.spotify-track-list span,
+.spotify-track-list em {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.spotify-track-list strong {
+  min-width: 0;
+  overflow: hidden;
+  font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.spotify-panel-actions a {
+  display: inline-grid;
+  place-items: center;
+  min-width: 160px;
+  background: var(--text);
+}
+
+.spotify-eq {
+  display: inline-flex;
+  align-items: end;
+  gap: 5px;
+  height: 34px;
+}
+
+.spotify-eq i {
+  width: 5px;
+  background: var(--cyan);
+}
+
+.spotify-eq i:nth-child(1) { height: 12px; }
+.spotify-eq i:nth-child(2) { height: 22px; }
+.spotify-eq i:nth-child(3) { height: 15px; }
+.spotify-eq i:nth-child(4) { height: 28px; }
+.spotify-eq i:nth-child(5) { height: 19px; }
 
 .release-grid {
   display: grid;
@@ -878,6 +990,23 @@ h1 {
   color: var(--muted);
   font-size: 0.96rem;
   line-height: 1.58;
+}
+
+html[lang="tr"] .release-card {
+  min-height: 244px;
+}
+
+html[lang="tr"] .release-card p[data-i18n^="release"][data-i18n$="Text"] {
+  display: none;
+}
+
+html[lang="tr"] .release-card h3 {
+  max-width: 15ch;
+  margin-bottom: 0;
+}
+
+html[lang="tr"] .release-card .waveform {
+  margin-top: 20px;
 }
 
 .release-card.is-playing {
@@ -1342,22 +1471,52 @@ h1 {
     line-height: 1.45;
   }
 
-  .spotify-frame--artist {
+  .spotify-panel {
+    min-height: 0;
+    padding: 22px;
+  }
+
+  .spotify-panel-top {
+    align-items: flex-start;
+  }
+
+  .spotify-panel-top strong {
+    font-size: clamp(1.8rem, 8vw, 2.6rem);
+  }
+
+  .spotify-mark {
+    width: 44px;
+    height: 44px;
+    font-size: 1.05rem;
+  }
+
+  .spotify-track-list {
+    margin: 22px 0;
+  }
+
+  .spotify-track-list a {
+    grid-template-columns: 30px minmax(0, 1fr);
+    gap: 10px;
+    padding: 13px 14px;
+  }
+
+  .spotify-track-list em {
     display: none;
   }
 
-  .spotify-frame--compact {
-    display: block;
-    height: 152px;
-    max-height: 152px;
-    background: #121212;
+  .spotify-panel-actions {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 14px;
   }
 
-  .spotify-feature iframe {
+  .spotify-panel-actions a {
     width: 100%;
-    height: 100%;
     min-width: 0;
-    min-height: 0;
+  }
+
+  .spotify-eq {
+    align-self: flex-start;
   }
 
   .visual-wall {
@@ -1421,6 +1580,10 @@ h1 {
     border: 1px solid var(--line);
   }
 
+  html[lang="tr"] .release-card {
+    min-height: 0;
+  }
+
   .release-card::after {
     right: -28px;
     bottom: -32px;
@@ -1434,6 +1597,10 @@ h1 {
     margin: 14px 0 9px;
     font-size: clamp(1.75rem, 8vw, 2.15rem);
     line-height: 0.98;
+  }
+
+  html[lang="tr"] .release-card h3 {
+    margin-bottom: 0;
   }
 
   .release-card p {
@@ -1464,6 +1631,10 @@ h1 {
     margin: 14px 0 14px;
   }
 
+  html[lang="tr"] .release-card .waveform {
+    margin-top: 12px;
+  }
+
   .waveform i {
     width: 4px;
   }
@@ -1483,9 +1654,20 @@ h1 {
     padding: 20px;
   }
 
-  .spotify-frame--compact {
-    height: 152px;
-    max-height: 152px;
+  .spotify-panel {
+    padding: 18px;
+  }
+
+  .spotify-panel-top {
+    gap: 12px;
+  }
+
+  .spotify-panel-top strong {
+    font-size: clamp(1.65rem, 9vw, 2.25rem);
+  }
+
+  .spotify-track-list a {
+    padding: 12px;
   }
 }
 
